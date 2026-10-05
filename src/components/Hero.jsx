@@ -1,4 +1,6 @@
-import PC from "../assets/PC.svg";
+import PC from "../assets/PCPng.png";
+import phon from "../assets/phone.svg";
+import phone from "../assets/phonePNG.png";
 export default function Hero()
 {
    return(
@@ -9,8 +11,9 @@ export default function Hero()
         </div>
 
         <div className ="leftHero">
-            <div className="PCcontainer">
-            <img src= {PC} alt="PC" className="PC"/>
+            <div className="screenContainer">
+                <img src= {phone} alt="phone" className="phone"/>
+                <img src= {PC} alt="PC" className="PC"/>
             </div>
         </div>
     </div>

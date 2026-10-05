@@ -1,5 +1,13 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: linear-gradient(
+  0deg,
+  #c7b299 0%,
+  #9dc8ce 53%,
+  #ffffff 100%
+);
+background-attachment: fixed;
+
 }
 
 a {
@@ -7,6 +15,16 @@ a {
   text-decoration: none;
 }
 
+.PC {
+  height: 400px;
+  width: 450px;
+}
+
+.phone {
+  height: 400px;
+  width: 250px;
+  padding-top: 5px;
+}
 
 .logo {
   width: 100px;
@@ -24,7 +42,6 @@ a {
 
   height: 80px;
 
-  background-color: rgba(194, 181, 155, 1);
   border-radius: 20px;
 
   padding: 0 24px;
@@ -56,7 +73,6 @@ a {
   width: 100%;
   height: 2px;
 
-  background-color: #F4F4F4;
 
   transform: scaleX(0);
   transform-origin: right;
@@ -85,8 +101,10 @@ a {
 
 .heroContainer {
  display: grid;
- grid-template-columns: 1fr 1fr;
+ grid-template-columns: auto auto;
+ padding-top: 80px;
 }
+
 
 .rightHero {
     direction: rtl;
@@ -101,10 +119,15 @@ a {
     padding: 60px 40px;
 }
 
-.leftHero
-{
 
+.leftHero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
+
+
 
 .mainTitle {
     margin: 0;
