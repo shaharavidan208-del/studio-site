@@ -1,5 +1,4 @@
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: linear-gradient(
   0deg,
   #c7b299 0%,
@@ -17,12 +16,13 @@ a {
 
 .PC {
   height: 400px;
-  width: 450px;
+  width: auto;
 }
 
 .phone {
   height: 400px;
-  width: 250px;
+   transform: translate(-40px, 30px);
+  width: auto;
   padding-top: 5px;
 }
 
@@ -100,54 +100,126 @@ a {
 }
 
 .heroContainer {
- display: grid;
- grid-template-columns: auto auto;
- padding-top: 80px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 56px);
+  max-width: 1600px;
+  margin: 0 auto;
 }
-
 
 .rightHero {
-    direction: rtl;
-    text-align: right;
-    max-width: 650px;
+  grid-column: 1;
+  grid-row: 1;
+  direction: rtl;
+  text-align: right;
+  width: 100%;
+  max-width: 760px;
+  justify-self: end;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    gap: 20px;
-    padding: 60px 40px;
+  gap: 20px;
+  padding: 40px 0;
 }
 
-
 .leftHero {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  min-width: 0;
 }
 
-
-
 .mainTitle {
-    margin: 0;
-
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    font-weight: 700;
-    line-height: 0.95;
-
-    letter-spacing: -2px;
-
-    color: var(--text);
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  color: var(--text);
 }
 
 .subTitle {
-    margin: 0;
+  margin: 0;
+  max-width: 680px;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.55;
+}
 
-    max-width: 600px;
+/* --- Services cards inside the right side of the hero --- */
+.heroServices {
+  --service-border: rgba(17, 17, 17, 0.12);
+  --service-surface: rgba(255, 255, 255, 0.58);
+  --service-muted: #6c655c;
+  --service-accent: #9dc8ce;
 
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 40px;
+}
 
-    color: var(--text-secondary);
+.heroServiceCard {
+  min-width: 0;
+  min-height: 200px;
+  padding: 18px;
+  border: 1px solid var(--service-border);
+  border-radius: 24px;
+  background: var(--service-surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.heroServiceIndex {
+  color: #7a746c;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  direction: ltr;
+  text-align: right;
+}
+
+.heroServiceContent h3 {
+  margin: 0 0 10px;
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.heroServiceContent p {
+  margin: 0;
+  color: var(--service-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.heroServicePill {
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 18px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(231, 225, 215, 0.9);
+  color: #35312d;
+  font-size: 0.68rem;
+  line-height: 1;
+  white-space: nowrap;
+  direction: ltr;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
 }
 
 :root {
@@ -156,20 +228,73 @@ a {
 }
 
 
+@media (max-width: 1100px) {
+  .heroContainer {
+    grid-template-columns: 1fr;
+    padding: 60px 32px 30px;
+  }
+
+  .rightHero {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .leftHero {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .heroServices {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
-    .rightHero {
-        width: 100%;
-        max-width: none;
+  .heroContainer {
+    padding: 40px 24px 24px;
+  }
 
-        padding: 40px 24px;
-    }
+  .rightHero {
+    width: 100%;
+    max-width: none;
+    padding: 20px 0 30px;
+  }
 
-    .mainTitle {
-        font-size: 3rem;
-        letter-spacing: -1px;
-    }
+  .mainTitle {
+    font-size: 3rem;
+    letter-spacing: -1px;
+  }
 
-    .subTitle {
-        font-size: 1.05rem;
-    }
+  .subTitle {
+    font-size: 1.05rem;
+  }
+
+  .heroServices {
+    grid-template-columns: 1fr;
+  }
+
+  .heroServiceCard {
+    min-height: 210px;
+    
+  }
+}
+
+@font-face {
+  font-family: "BIZ UDPGothic";
+  src: url("./assets/fonts/BIZUDPGothic-Regular.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans Hebrew";
+  src: url("./assets/fonts/NotoSansHebrew-Regular.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "BIZ UDPGothic", "Noto Sans Hebrew", sans-serif;
 }
